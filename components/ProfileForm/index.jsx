@@ -51,7 +51,7 @@ const ProfileForm = ({ data }) => {
 
     return (
         <form className="space-y-6" onSubmit={handleSubmit}>
-            <h5 className="text-xl font-medium text-gray-900 dark:text-white">Profile details</h5>
+            <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">Profile details</h5>
             <div>
                 <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your name</label>
                 {
