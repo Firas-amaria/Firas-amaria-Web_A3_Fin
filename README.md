@@ -33,9 +33,11 @@ npm install
 
 ### Running the Server
 
-After installing the dependencies, you can start the development server using the following command:
+After installing the dependencies, you can start the server using the following 2 commands:
 ```
-npm run dev
+npm run build
+
+npm run start
 ```
 The application will be accessible at http://localhost:3000 in your web browser.
 
