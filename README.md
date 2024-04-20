@@ -62,7 +62,7 @@ To log in as a student, you can use the following demo credentials:
 ### Lecturer Login
 To log in as a lecturer, you can use the following demo credentials:
 
-- **Email:** lec1@email.com
+- **Email:** smith@email.com
 - **Password:** 123456
 
 Please note that this is a demo environment, and you are welcome to use the provided login credentials. Additionally, feel free to create a new account with your email address.
