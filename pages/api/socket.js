@@ -1,6 +1,11 @@
 import { Server } from "socket.io";
 import {getSession} from 'next-auth/react';
 
+/**
+ * this is the chat server that will be run when the user enters the chat room
+ * it works as socket server and listens for messages from the main server
+ * 
+ */
 export default function handler(req, res) {
 	if (res.socket.server.io) {
 		return res.status(200).json({

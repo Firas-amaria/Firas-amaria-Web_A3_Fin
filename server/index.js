@@ -2,7 +2,10 @@ import http from 'http';
 import {Server} from 'socket.io';
 import {getSession} from 'next-auth/react';
 
-
+/**
+ * this is the starting function of our server it handles initialization 
+ * and message handling
+ */
 async function init(){
     const httServer = http.createServer();
     const PORT = process.env.PORT || 5000;

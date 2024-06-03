@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-
+/**
+ * this is the schema for the Messages model in the MongoDb 
+ */
 const MessageSchema = new mongoose.Schema({
     courseId: {
         type: mongoose.Schema.Types.ObjectId,

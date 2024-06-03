@@ -1,3 +1,9 @@
+
+/**
+ * this is the main page controller that handles the dark / light settings 
+ * and also handles the mobile side bar when the screen is resized
+ */
+
 var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 

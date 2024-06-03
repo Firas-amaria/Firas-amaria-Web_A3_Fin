@@ -1,6 +1,8 @@
 
 import mongoose from "mongoose";
-
+/**
+ * this is the schema for the courses model in the MongoDb 
+ */
 const courseSchema = new mongoose.Schema({
     name: {
         type: String,

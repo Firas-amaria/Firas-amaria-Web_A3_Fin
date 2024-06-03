@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-
+/**
+ * this is the schema for the assignment model in the MongoDb 
+ */
 const assignmentSchema = new mongoose.Schema({
     title: {
         type: String,

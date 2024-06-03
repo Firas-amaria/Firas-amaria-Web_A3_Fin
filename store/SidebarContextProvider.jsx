@@ -1,3 +1,8 @@
+
+/*
+this peice of code is a controller for the sidebar
+that helps it change from the default style into the mini-sidebar style
+*/
 'use client';
 
 const { createContext, useState, useEffect, useContext } = require("react");

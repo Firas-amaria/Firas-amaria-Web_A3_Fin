@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
-
+/**
+ * this is the schema for the Users model in the MongoDb 
+ */
 const useSchema = new mongoose.Schema({
     name: {
         type: String,
