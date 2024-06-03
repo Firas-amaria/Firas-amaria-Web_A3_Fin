@@ -1,5 +1,10 @@
 import Link from "next/link";
 
+/**
+ * this is the home page , it the 1st page that shows when entering the link
+ * it has a small discreption of the website and a "get started" button that send user into the login page
+ * if the user is already logged in it sends them into their dashboard
+ */
 const Home = () => {
     return (
 		<div className="py-20 px-10 flex gap-4 justify-center items-center dark:bg-gray-700">

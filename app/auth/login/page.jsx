@@ -4,6 +4,10 @@ import { signIn } from "next-auth/react"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+/**
+ * the login page component that handles the login request from the user
+ */
+
 const Login = () => {
     const [error, setError] = useState(null);
     const [submitting, setSubmitting] = useState(false);

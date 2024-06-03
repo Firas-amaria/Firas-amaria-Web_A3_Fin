@@ -4,6 +4,10 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
+/**
+ * this is the enrollment button component it handles enrolling requests from the user 
+ * and adds their information to the course DataBase list 
+ */
 const EnrollButton = ({courseId, userId}) => {
     const [submitting, setSubmitting] = useState(false);
 

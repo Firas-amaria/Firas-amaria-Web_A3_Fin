@@ -6,6 +6,11 @@ import Link from "next/link";
 import { useContext, useState } from "react";
 import { Sun, SunFill } from "react-bootstrap-icons";
 
+/**
+ * the Navbar is placed on the top of the page layout as a header 
+ * this is the navbar component controller it helps the navbar to change depending on the size 
+ * of the screen and in smaller screen will show the mobile sidebar button similar to other apps
+ */
 const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(false);
     

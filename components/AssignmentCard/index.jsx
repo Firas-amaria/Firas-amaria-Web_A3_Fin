@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import React from 'react'
 
+/**
+ * the assignment card component that create the assignment card for the course page 
+ */
 const AssignmentCard = ({assignment, student}) => {
   return (
     <div>

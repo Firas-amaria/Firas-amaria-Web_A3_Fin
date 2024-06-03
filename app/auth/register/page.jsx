@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+/**
+ * this is the request handler for user that creates new user information into the database
+ * and it handles if the information that was already used or not 
+ */
 const Register = () => {
   const [error, setError] = useState(null);
   const [passwords, setPasswords] = useState({});

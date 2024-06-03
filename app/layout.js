@@ -5,6 +5,11 @@ import SessionWrapper from "@/components/SessionWrapper";
 import Navbar from "@/components/Navbar";
 import { SidebarContextProvider } from "@/store/SidebarContextProvider";
 
+/**
+ * this is the main layout for our website the main layout has a navbar on the top and we insert
+ * "children" into the rest of the page layout children are inserted using <Link> elements from the next.js 
+ */
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {

@@ -5,6 +5,10 @@ import Link from "next/link";
 import { PencilSquare } from "react-bootstrap-icons";
 import { toast } from "react-toastify";
 
+/**
+ * this the profile form controller it is responsible for handleing viewing 
+ * profile information and editing the profile information 
+ */
 const ProfileForm = ({ data }) => {
     const [error, setError] = useState(null)
     const [submitting, setSubmitting] = useState(false)

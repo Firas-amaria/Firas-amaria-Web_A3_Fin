@@ -6,6 +6,10 @@ import { BookFill, ClockFill, CodeSlash } from "react-bootstrap-icons"
 import { PencilSquare, Trash } from "react-bootstrap-icons/dist";
 import { toast } from "react-toastify";
 
+/**
+ * this is the course card component that handle getting the course info from the Database and 
+ * create the course card to be viewed by the user , this nadles multiple cards 
+ */
 const CourseCard = ({ course, author }) => {
     const router = useRouter();
 
