@@ -2,33 +2,34 @@ import Link from "next/link";
 
 const Home = () => {
     return (
-        <div className="relative min-h-screen bg-cover bg-center flex items-center justify-center" style={{backgroundImage: `url("/images/home3.png")`}}>
-            <div className="absolute inset-0 bg-black opacity-50"></div>
-            <div className="relative z-20 max-w-screen-lg mx-auto grid grid-cols-12 items-center">
-                <div className="col-span-6 text-center">
-                    <span className="uppercase text-white text-5xl font-bold mb-4 block" style={{ marginTop: '0.5rem' }}>WELCOME TO LMS</span>
-                    <p className="text-xl text-gray-300 mt-6 max-w-lg">
-                        Start studying from home. Arrange your space, tools, and
-                        mindset. As experts in the field, we advocate providing
-                        student-focused support, even when we have a lot of
-                        work.
-                    </p>
-                    <div className="mt-12 flex gap-8">
-                        <Link href={'/auth/login'}
-                            className="text-white uppercase py-3 px-8 text-base font-semibold border border-white rounded-full bg-blue-700 hover:bg-blue-800 transition duration-300"
-                        >
-                            Login
-                        </Link>
-                        <Link href={'/auth/register'}
-                            className="text-blue-700 uppercase py-3 px-8 text-base font-semibold border border-blue-700 rounded-full bg-white hover:bg-gray-100 transition duration-300"
-                        >
-                            Sign up
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+		<div className="py-20 px-10 flex gap-4 justify-center items-center dark:bg-gray-700">
+			<div>
+				<div className="max-w-xl">
+					<h3 className="text-5xl max-sm:text-3xl font-bold text-gray-800 leading-tight dark:text-gray-200">
+						WELCOME TO LMS
+					</h3>
+					<p className="text-2xl text-gray-500 mt-6 dark:text-gray-400 max-sm:text-lg">
+						Start studying from home. Arrange your space,tools,and
+						mindset. As experts in the field, we advocate providing
+						student-focused support, even when we have a lot of
+						work.
+					</p>
+					<div className="mt-4">
+						<Link href={'/auth/login'}
+							type="button"
+							class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-16 py-4 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+						>
+							Get Started
+						</Link>
+						
+					</div>
+				</div>
+			</div>
+			<div>
+				<img className="max-w-lg hidden sm:block" src="/images/hero.png" />
+			</div>
+		</div>
+	);
 };
 
 export default Home;
