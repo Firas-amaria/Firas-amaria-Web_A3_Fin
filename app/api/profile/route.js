@@ -3,7 +3,9 @@ import { authOptions } from "../auth/[...nextauth]/route";
 import User from "@/models/User";
 import { NextResponse } from "next/server";
 
-
+/**
+ * Functions for the profile handler that updates the mongoDB DataBase profile information
+ */
 export async function PATCH(req){
     try{
         const session = await getServerSession(authOptions);

@@ -1,7 +1,9 @@
 import Message from "@/models/Message";
 import { NextResponse } from "next/server";
 
-
+/**
+ * these function handle the messages i the chat room server 
+ */
 export async function POST(req){
     try{
         const data = await req.json();
