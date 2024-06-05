@@ -8,6 +8,13 @@ var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
 
+/**
+ * This function sets the color theme of the webpage based on the user's preference.
+ * It checks if the 'color-theme' is stored in local storage. If it is, it applies the stored theme.
+ * If not, it checks if the user's system preference is dark mode. If it is, it applies the dark theme.
+ * If neither condition is met, it applies the light theme.
+ *
+ */
 if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
 } else {
@@ -23,6 +30,14 @@ if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localS
 
 var themeToggleBtn = document.getElementById('theme-toggle');
 
+/**
+ * This function handles the theme toggling functionality.
+ * It toggles the icons inside the theme toggle button and applies the dark or light theme based on the user's preference.
+ * If the 'color-theme' is stored in local storage, it applies the stored theme.
+ * If not, it checks if the user's system preference is dark mode. If it is, it applies the dark theme.
+ * If neither condition is met, it applies the light theme.
+ *
+ */
 themeToggleBtn.addEventListener('click', function() {
 
     // toggle icons inside button
@@ -53,6 +68,11 @@ themeToggleBtn.addEventListener('click', function() {
 });
 
 
+/**
+ * Event listener for DOMContentLoaded event.
+ * This function handles the mobile side bar when the screen is resized.
+ * 
+ */
 document.addEventListener('DOMContentLoaded', (event) => {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
 const sidebar = document.querySelector('.sidebar');

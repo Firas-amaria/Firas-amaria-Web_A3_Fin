@@ -14,19 +14,46 @@ import {
     BoxArrowRight,
 } from "react-bootstrap-icons";
 
+/**
+ * Sidebar component for the application.
+ * @returns {JSX.Element} - The Sidebar component.
+ */
 const Sidebar = () => {
+    /**
+     * State variable to track the active menu.
+     * @type {boolean}
+     */
     const [activeMenu, setActiveMenu] = useState(false);
+
+    /**
+     * State variable to track the sidebar close state.
+     * @type {boolean}
+     */
     const [sidebarClose, setSidebarClose] = useState(false);
 
+    /**
+     * Get the current pathname from Next.js navigation.
+     * @type {string}
+     */
     const pathname = usePathname();
+
+    /**
+     * Get the session data from NextAuth.
+     * @type {object}
+     */
     const session = useSession();
 
+    /**
+     * Effect hook to update the active menu based on the current pathname.
+     */
     useEffect(() => {
         // Get active menu from url path
         setActiveMenu(pathname);
     }, [pathname]);
 
-
+    /**
+     * Function to handle the sidebar close button click.
+     */
     const handleSidebarClose = () => {
         setSidebarClose(prev => !prev);
     }

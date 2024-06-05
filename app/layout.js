@@ -12,11 +12,21 @@ import { SidebarContextProvider } from "@/store/SidebarContextProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
+//this is for the web page name and discreption
 export const metadata = {
 	title: "Course Management",
 	description: "Manage your courses with ease",
 };
 
+/**
+ * This is the main layout for our website. The main layout has a navbar on the top and we insert
+ * "children" into the rest of the page layout. Children are inserted using <Link> elements from the next.js.
+ *
+ * @param {Object} props - The props passed to the component.
+ * @param {React.ReactNode} props.children - The children components to be rendered within the layout.
+ *
+ * @returns {React.ReactElement} - The root element of the layout.
+ */
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en">

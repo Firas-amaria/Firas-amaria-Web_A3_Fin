@@ -7,15 +7,26 @@ import { useContext, useState } from "react";
 import { Sun, SunFill } from "react-bootstrap-icons";
 
 /**
- * the Navbar is placed on the top of the page layout as a header 
- * this is the navbar component controller it helps the navbar to change depending on the size 
- * of the screen and in smaller screen will show the mobile sidebar button similar to other apps
+ * The Navbar component is responsible for displaying the navigation bar at the top of the page.
+ * It includes the application logo, user dropdown menu, theme toggle button, and mobile menu button.
+ * @returns {JSX.Element} - The JSX code for the Navbar component.
  */
 const Navbar = () => {
+    /**
+     * State variable to control the visibility of the user dropdown menu.
+     * @type {boolean}
+     */
     const [openDropdown, setOpenDropdown] = useState(false);
     
+    /**
+     * Context hook to access the SidebarContextProvider's context.
+     * It provides methods to control the sidebar's visibility.
+     */
     const {setIsOpen} = useSidebarContext();
 
+    /**
+     * The session object provided by NextAuth.js, which contains information about the current user session.
+     */
     const session = useSession();
 
     return (

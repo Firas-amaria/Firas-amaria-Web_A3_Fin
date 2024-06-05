@@ -6,15 +6,24 @@ import { PencilSquare } from "react-bootstrap-icons";
 import { toast } from "react-toastify";
 
 /**
- * this the profile form controller it is responsible for handleing viewing 
- * profile information and editing the profile information 
+ * ProfileForm is a React functional component that handles the profile form.
+ * It displays the user's profile information and allows editing.
+ *
+ * @param {Object} data - The initial profile data.
+ * @returns {JSX.Element} - The JSX element for the ProfileForm component.
  */
 const ProfileForm = ({ data }) => {
+    // State variables
     const [error, setError] = useState(null)
     const [submitting, setSubmitting] = useState(false)
     const [edit, setEdit] = useState(false)
     const [formData, setFormData] = useState(data)
 
+    /**
+     * Handles the form submission.
+     *
+     * @param {Event} e - The submit event.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSubmitting(true);
@@ -40,11 +49,21 @@ const ProfileForm = ({ data }) => {
         }
     }
 
+    /**
+     * Handles the edit button click.
+     *
+     * @param {Event} e - The click event.
+     */
     const handleEditClick = (e) => {
         e.preventDefault();
         setEdit(true);
     }
 
+    /**
+     * Handles the input change event.
+     *
+     * @param {Event} e - The change event.
+     */
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -53,6 +72,7 @@ const ProfileForm = ({ data }) => {
         });
     }
 
+    // Render the component
     return (
         <form className="space-y-6" onSubmit={handleSubmit}>
             <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">Profile details</h5>

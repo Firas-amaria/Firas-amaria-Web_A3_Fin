@@ -3,6 +3,23 @@ import User from "@/models/User";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+/**
+ * Configuration object for NextAuth.js authentication.
+ * @typedef {Object} AuthOptions
+ * @property {Object} session - Session configuration.
+ * @property {string} session.strategy - The session strategy to use.
+ * @property {Object} pages - Custom pages for authentication.
+ * @property {string} pages.signIn - The sign-in page URL.
+ * @property {string} secret - The secret key for signing the session.
+ * @property {Array} providers - The authentication providers to use.
+ * @property {Object} callbacks - Callback functions for session and JWT handling.
+ * @property {Function} callbacks.session - Callback function for session handling.
+ * @property {Function} callbacks.jwt - Callback function for JWT handling.
+ */
+
+/**
+ * @type {AuthOptions}
+ */
 export const authOptions = {
   session: {
     strategy: "jwt",
@@ -18,6 +35,14 @@ export const authOptions = {
         password: {},
         role: {},
       },
+      /**
+       * Authorize function for credentials provider.
+       * @param {Object} credentials - The user credentials.
+       * @param {string} credentials.email - The user email.
+       * @param {string} credentials.password - The user password.
+       * @param {string} credentials.role - The user role.
+       * @returns {Promise<Object|null>} - The user object if authorized, null otherwise.
+       */
       authorize: async (credentials) => {
         try {
           await connectDB();
@@ -47,6 +72,14 @@ export const authOptions = {
   ],
 
   callbacks: {
+    /**
+     * Session callback function.
+     * @param {Object} params - The callback parameters.
+     * @param {Object} params.session - The current session.
+     * @param {Object} params.token - The JWT token.
+     * @param {Object} params.user - The user object.
+     * @returns {Promise<Object>} - The updated session.
+     */
     async session({ session, token, user }) {
       try {
         await connectDB();
@@ -67,10 +100,17 @@ export const authOptions = {
       }
     },
 
+    /**
+     * JWT callback function.
+     * @param {Object} params - The callback parameters.
+     * @param {Object} params.user - The user object.
+     * @param {Object} params.token - The JWT token.
+     * @returns {Object} - The updated JWT token.
+     */
     async jwt({ user, token }) {
       if (user) {
         // Note that this if condition is needed
-        token.user = { ...user };
+        token.user = {...user };
       }
       return token;
     },

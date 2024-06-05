@@ -5,14 +5,30 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 /**
- * this is the enrollment button component it handles enrolling requests from the user 
- * and adds their information to the course DataBase list 
+ * This is the enrollment button component. It handles enrolling requests from the user 
+ * and adds their information to the course DataBase list.
+ * 
+ * @param {number} courseId - The ID of the course to enroll in.
+ * @param {number} userId - The ID of the user enrolling in the course.
+ * 
+ * @returns {JSX.Element} - A JSX element representing the enrollment button.
  */
 const EnrollButton = ({courseId, userId}) => {
+    /**
+     * State variable to track if the enrollment request is being submitted.
+     */
     const [submitting, setSubmitting] = useState(false);
 
+    /**
+     * Router object to handle navigation.
+     */
     const router = useRouter();
 
+    /**
+     * Function to handle the enrollment request.
+     * 
+     * @param {Event} e - The click event.
+     */
     const handleEnroll = async(e)=>{
         setSubmitting(true);
         const response = await fetch('/api/courses/enroll', {

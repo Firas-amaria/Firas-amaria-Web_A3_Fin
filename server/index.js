@@ -9,7 +9,7 @@ import {getSession} from 'next-auth/react';
 async function init(){
     const httServer = http.createServer();
     const PORT = process.env.PORT || 5000;
-
+    //determine the port and the link to the server
     const io = new Server(httServer, {
         cors: {
             origin: ['http://localhost:3000', 'https://web-a3-fin.onrender.com//api'],
@@ -18,6 +18,7 @@ async function init(){
         }
     });
 
+    // Socket.io middleware function to authenticate and authorize users
     io.use(async (socket, next) => {
         const session = await getSession({req: socket.request});
         socket.user = session?.user;

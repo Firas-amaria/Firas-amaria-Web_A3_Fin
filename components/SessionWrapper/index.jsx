@@ -3,9 +3,11 @@ import { SessionProvider } from 'next-auth/react'
 import React from 'react'
 
 /**
- * this is a very important component for the Next.js structure
- * it contains the "children" property so that it can be used inside other layouts 
- * this can be used not only for the hidders but also the navbar and the dashboard layout
+ * This is a functional component that wraps its children with the NextAuth.js SessionProvider.
+ * It is used to provide session management capabilities to its child components.
+ * 
+ * @param {React.ReactNode} children - The child components that will be wrapped by the SessionProvider.
+ * @returns {React.ReactElement} - The wrapped child components with the SessionProvider.
  */
 const SessionWrapper = ({children}) => {
   return (

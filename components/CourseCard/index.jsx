@@ -7,12 +7,27 @@ import { PencilSquare, Trash } from "react-bootstrap-icons/dist";
 import { toast } from "react-toastify";
 
 /**
- * this is the course card component that handle getting the course info from the Database and 
- * create the course card to be viewed by the user , this nadles multiple cards 
+ * CourseCard is a functional component that renders a single course card.
+ * It takes in two props: course and author.
+ * 
+ * @param {Object} course - The course object containing details such as name, features, and thumbnail.
+ * @param {boolean} author - A boolean indicating whether the current user is the author of the course.
+ * 
+ * @returns {JSX.Element} - A JSX element representing the course card.
  */
 const CourseCard = ({ course, author }) => {
     const router = useRouter();
 
+    /**
+     * handleDelete is an asynchronous function that handles the deletion of a course.
+     * It sends a POST request to the server API to delete the course with the given ID.
+     * If the deletion is successful, it shows a success toast and refreshes the page.
+     * If there is an error, it shows an error toast.
+     * 
+     * @param {Event} e - The event object that triggered the deletion.
+     * 
+     * @returns {void}
+     */
     const handleDelete = async(e)=>{
         const id = e.target.dataset.id;
         console.log(id);

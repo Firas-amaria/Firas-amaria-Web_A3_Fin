@@ -2,7 +2,13 @@ import Link from 'next/link'
 import React from 'react'
 
 /**
- * the assignment card component that create the assignment card for the course page 
+ * The AssignmentCard component is responsible for rendering an individual assignment card on the course page.
+ * 
+ * @param {Object} props - The properties passed to the component.
+ * @param {Object} props.assignment - The assignment object containing details such as title, course, and submissions.
+ * @param {Object} props.student - The student object if the user is a student, otherwise null.
+ * 
+ * @returns {JSX.Element} - The JSX element representing the assignment card.
  */
 const AssignmentCard = ({assignment, student}) => {
   return (

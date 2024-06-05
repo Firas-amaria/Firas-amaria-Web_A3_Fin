@@ -4,32 +4,45 @@ import Course from "@/models/Course";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/route";
 
+/**
+ * Handles POST request to create a new course.
+ * @param {import("next/server").NextRequest} req - The incoming request.
+ * @returns {Promise<import("next/server").NextResponse>} - The response to send back.
+ */
 export async function POST(req) {
-	try {
-		const formData = await req.formData();
-		const { name, syllabus, details, thumbnail, videos, language, parts, duration } =
-			Object.fromEntries(formData);
+    try {
+        // Parse form data
+        const formData = await req.formData();
+        // Extract form fields
+        const { name, syllabus, details, thumbnail, videos, language, parts, duration } =
+            Object.fromEntries(formData);
 
+        // Log form data
         console.log(Object.fromEntries(formData));
 
-		// Save thumbnail to uploads folder
+        // Save thumbnail to uploads folder
         let thumbnailName = "";
-		if (thumbnail) {
-			const uploadDir = "public/uploads";
-			thumbnailName = `${Date.now()}-${thumbnail.name}`;
-			const thumbnailPath = `${uploadDir}/${thumbnailName}`;
+        if (thumbnail) {
+            const uploadDir = "public/uploads";
+            thumbnailName = `${Date.now()}-${thumbnail.name}`;
+            const thumbnailPath = `${uploadDir}/${thumbnailName}`;
 
+            // Convert thumbnail to buffer
             const bytes = await thumbnail.arrayBuffer();
             const buffer = Buffer.from(bytes);
 
-			await fs.writeFile(thumbnailPath, buffer);
-		}
+            // Write thumbnail to file
+            await fs.writeFile(thumbnailPath, buffer);
+        }
 
-        // Save course to database
+        // Get user session
         const session = await getServerSession(authOptions);
         const user = session.user;
+
+        // Log user
         console.log(user);
 
+        // Create new course object
         const course = new Course({
             name,
             syllabus,
@@ -40,17 +53,22 @@ export async function POST(req) {
             author: user.id
         });
 
+        // Save course to database
         await course.save();
 
-		return NextResponse.json({
-			error: false,
-			message: "Course created successfully",
-		});
-	} catch (err) {
-		console.log(err);
-		return NextResponse.json({
-			error: true,
-			message: "Something went wrong",
-		});
-	}
+        // Return success response
+        return NextResponse.json({
+            error: false,
+            message: "Course created successfully",
+        });
+    } catch (err) {
+        // Log error
+        console.log(err);
+
+        // Return error response
+        return NextResponse.json({
+            error: true,
+            message: "Something went wrong",
+        });
+    }
 }

@@ -5,15 +5,32 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 /**
- * this is the request handler for user that creates new user information into the database
- * and it handles if the information that was already used or not 
+ * Register component for user registration.
+ * Handles user registration form submission and validation.
+ * @returns {JSX.Element} - The JSX for the Register component.
  */
 const Register = () => {
+  /**
+   * State variable to store error message.
+   * @type {React.useState<string | null>}
+   */
   const [error, setError] = useState(null);
+  /**
+   * State variable to store user passwords.
+   * @type {React.useState<{ password: string, confirmPassword: string }>}
+   */
   const [passwords, setPasswords] = useState({});
-
+  /**
+   * Router object for navigation.
+   * @type {ReturnType<typeof useRouter>}
+   */
   const router = useRouter();
 
+  /**
+   * Handles form submission for user registration.
+   * Validates passwords and sends registration request to the server.
+   * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
 

@@ -5,21 +5,42 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 /**
- * the login page component that handles the login request from the user
+ * The login page component that handles the login request from the user.
+ * @returns {JSX.Element} - The JSX for the login page.
  */
 
 const Login = () => {
+    /**
+     * State variable to hold any error message during login.
+     * @type {React.useState<string | null>}
+     */
     const [error, setError] = useState(null);
+    /**
+     * State variable to track whether the form is currently being submitted.
+     * @type {React.useState<boolean>}
+     */
     const [submitting, setSubmitting] = useState(false);
 
+    /**
+     * The router object to navigate to different routes.
+     * @type {ReturnType<typeof useRouter>}
+     */
     const router = useRouter();
 
+    /**
+     * Event handler for the login form submission.
+     * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSubmitting(true);
         setError(null);
         const formData = new FormData(e.target);
 
+        /**
+         * Attempts to sign in the user using the provided credentials.
+         * @type {ReturnType<typeof signIn>}
+         */
         const response = await signIn("credentials", {
             redirect: false,
             email: formData.get("email"),
