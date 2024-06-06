@@ -1,3 +1,12 @@
+/**
+ * DashboardLayout is a React functional component that acts as a layout for the dashboard.
+ * It renders the sidebar and the main content area, and handles the toaster notifications.
+ * 
+ * @param {Object} props - The props passed to the component.
+ * @param {React.ReactNode} props.children - The children components to be rendered inside the main content area.
+ * 
+ * @returns {React.ReactElement} - The DashboardLayout component.
+ */
 "use client";
 
 import SessionWrapper from "@/components/SessionWrapper";
@@ -7,6 +16,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const DashboardLayout = ({ children }) => {
+	/**
+     * isOpen is a state variable that determines whether the sidebar is open or closed.
+     * It is obtained from the SidebarContextProvider using the useSidebarContext hook.
+     */
     const {isOpen} = useSidebarContext();
 
 	return (

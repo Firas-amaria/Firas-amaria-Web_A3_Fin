@@ -7,9 +7,21 @@ import {useSession} from "next-auth/react";
 import { useEffect, useState } from "react";
 import withSession from "@/components/HOC/withSession";
 
+/**
+ * The Home component is the main page of the application.
+ * It displays a list of courses fetched from the server.
+ * If the user is a lecturer, it also provides an option to create a new course.
+ * 
+ * @returns {JSX.Element} - The JSX representation of the Home component.
+ */
 function Home() {
+    // State variable to store the fetched courses
     const [courses, setCourses] = useState(null);
 
+    /**
+     * Fetches the list of courses from the server.
+     * Updates the 'courses' state with the fetched data.
+     */
     const getCourses = async ()=> {
         const response = await fetch(`/api/courses`, {
             method: "GET",
@@ -23,10 +35,12 @@ function Home() {
         }
     }
 
+    // Fetch the courses when the component mounts
 	useEffect(()=> {
         getCourses();
     }, []);
-
+    
+    // Get the user session data
 	const { data: session, status } = useSession();
     console.log('Session', session);
     const user = session?.user;

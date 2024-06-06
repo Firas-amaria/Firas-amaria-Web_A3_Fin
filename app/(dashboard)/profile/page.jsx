@@ -2,10 +2,25 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import ProfileForm from "@/components/ProfileForm";
 import { getServerSession } from "next-auth";
 
-
+/**
+ * Profile page component.
+ * Fetches user session and renders the ProfileForm component with user data.
+ * 
+ * @returns {JSX.Element} - The Profile page component.
+ */
 const Profile = async () => {
-
+    /**
+     * Fetch the server session using next-auth's getServerSession function.
+     * 
+     * @param {object} authOptions - The options for the auth route.
+     * @returns {Promise<object>} - The server session object.
+     */
     const session = await getServerSession(authOptions);
+    /**
+     * Extract the user data from the session object.
+     * 
+     * @type {object}
+     */
     const user = session?.user;
 
     return (

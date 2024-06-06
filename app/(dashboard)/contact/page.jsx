@@ -1,11 +1,31 @@
 'use client';
 
 import { useState } from "react";
-
+/**
+ * Contact component for a website.
+ * 
+ * @returns {JSX.Element} - The Contact component.
+ */
 const Contact = () => {
+    /**
+     * State variable to hold error message.
+     * 
+     * @type {React.useState<string | null>}
+     */
     const [error, setError] = useState(null)
+    
+    /**
+     * State variable to hold the submission status.
+     * 
+     * @type {React.useState<boolean>}
+     */
     const [submitting, setSubmitting] = useState(false)
 
+    /**
+     * Handles form submission.
+     * 
+     * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
+     */
     const handleSubmit = async (e) => { }
 
     return (

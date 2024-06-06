@@ -8,13 +8,34 @@ import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { ArrowRight } from 'react-bootstrap-icons';
 
+/**
+ * CourseDetails component to display course details, videos, and assignments.
+ * @param {Object} params - The parameters passed to the component.
+ * @param {string} params.id - The ID of the course.
+ * @returns {JSX.Element} - The JSX element to render the CourseDetails component.
+ */
 const CourseDetails = async ({ params }) => {
     const { id } = params;
+
+    /**
+     * Fetch the user session and extract the user data.
+     * @returns {Object} - The user data.
+     */
     const session = await getServerSession(authOptions);
     const user = session.user;
 
+    /**
+     * Fetch the course details by ID.
+     * @returns {Object} - The course data.
+     */
     const course = await Course.findById(id);
+
+    /**
+     * Fetch the assignments associated with the course.
+     * @returns {Array} - The array of assignment data.
+     */
     const assignments = await Assignment.find({ course: course._id }).populate('course');
+    
     // console.log('From course details page', assignments)
 
     return (

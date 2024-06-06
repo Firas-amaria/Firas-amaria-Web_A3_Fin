@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
 
+/**
+ * About component for displaying the about page of the application.
+ * @returns {JSX.Element} - The About component.
+ */
 const About = () => {
     return (
         <main className="flex-1 overflow-x-hidden overflow-y-auto p-4">

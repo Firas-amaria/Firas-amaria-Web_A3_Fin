@@ -1,3 +1,9 @@
+/**
+ * EditCourse component for editing existing courses.
+ * @param {Object} params - The parameters passed to the component.
+ * @param {string} params.id - The ID of the course to be edited.
+ * @returns {JSX.Element} - The EditCourse component.
+ */
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -6,14 +12,20 @@ import { PlusCircle } from 'react-bootstrap-icons';
 import { toast } from 'react-toastify';
 
 const EditCourse = ({params}) => {
+    // State variables
     const [error, setError] = useState(null);
     const [videoInputs, setVideoInputs] = useState([""]);
     const [submitting, setSubmitting] = useState(false);
     const [editCourse, setEditCourse] = useState(null);
 
+     // Extracting the course ID from the parameters
     const {id} = params;
     const router = useRouter();
 
+    /**
+     * Fetch the course details from the server.
+     * @returns {Promise<void>} - A promise that resolves when the course details are fetched.
+     */
     const fetchCourse = async () => {
         const response = await fetch(`/api/courses/${id}`);
         
@@ -29,10 +41,16 @@ const EditCourse = ({params}) => {
         }
     }
 
+    // Fetch the course details when the component mounts
     useEffect(()=> {
         fetchCourse();
     }, [])
 
+    /**
+     * Handle the form submission for updating the course.
+     * @param {Event} e - The event object.
+     * @returns {Promise<void>} - A promise that resolves when the form submission is handled.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);

@@ -1,10 +1,26 @@
 import Assignment from "@/models/Assignment";
 
-
-
+/**
+ * This component renders the details of a specific assignment.
+ * It fetches the assignment data from the server using the provided id,
+ * populates the related course and student data, and displays the assignment details and submissions.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.params - The route parameters.
+ * @param {string} props.params.id - The id of the assignment to fetch.
+ *
+ * @returns {JSX.Element} - The JSX element to render the assignment details.
+ */
 const AssignmentDetails = async ({params}) => {
     const { id } = params;
 
+    /**
+     * Fetch the assignment data from the server, populating the related course and student data.
+     *
+     * @param {string} id - The id of the assignment to fetch.
+     *
+     * @returns {Promise<Assignment>} - A promise that resolves to the fetched assignment data.
+     */
     const assignment = await Assignment.findById(id).populate('course').populate('submissions.student');
     console.log(assignment);
 

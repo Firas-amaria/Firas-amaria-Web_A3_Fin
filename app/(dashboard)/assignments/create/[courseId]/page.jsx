@@ -3,29 +3,49 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react"
 import { toast } from "react-toastify";
 
-
+/**
+ * CreateAssignment component for creating new assignments.
+ * @returns {JSX.Element} - The JSX element for the CreateAssignment component.
+ */
 const CreateAssignment = () => {
+    // State variables for error and submitting status
     const [error, setError] = useState(null)
     const [submitting, setSubmitting] = useState(false)
 
+    // Get parameters from the URL
     const params = useParams();
+     // Get router object for navigation
     const router = useRouter();
 
+    /**
+     * Handle form submission for creating a new assignment.
+     * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         
+        // Set submitting status to true
         setSubmitting(true);
+
+        // Send POST request to create a new assignment
         const reponse = await fetch('/api/assignments/create', {
             method: 'POST',
             body: formData
         })
 
+        // Check the response status
         if(reponse.status === 200) {
+            // Set submitting status to false
             setSubmitting(false);
+
+            // Show success toast
             toast.success('Assignment created successfully');
+
+            // Navigate to the course page
             router.push('/courses/' + params.courseId);
         }else{
+            // Show error toast
             toast.error('Something went wrong');
             return;
         }
