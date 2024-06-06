@@ -1,3 +1,8 @@
+
+/**
+ * A functional component for creating a new course.
+ * @returns {JSX.Element} - The JSX for the CreateCourse component.
+ */
 'use client';
 
 import { useRouter } from 'next/navigation';
@@ -6,12 +11,34 @@ import { PlusCircle } from 'react-bootstrap-icons';
 import { toast } from 'react-toastify';
 
 const CreateCourse = () => {
+    /**
+     * State for error messages.
+     * @type {React.State<string | null>}
+     */
     const [error, setError] = useState(null);
+
+    /**
+     * State for video input fields.
+     * @type {React.State<string[]>}
+     */
     const [videoInputs, setVideoInputs] = useState([""]);
+
+    /**
+     * State for form submission status.
+     * @type {React.State<boolean>}
+     */
     const [submitting, setSubmitting] = useState(false);
 
+    /**
+     * Router for navigation.
+     * @type {ReturnType<typeof useRouter>}
+     */
     const router = useRouter();
 
+    /**
+     * Handles form submission.
+     * @param {React.FormEvent<HTMLFormElement>} e - The form submission event.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);

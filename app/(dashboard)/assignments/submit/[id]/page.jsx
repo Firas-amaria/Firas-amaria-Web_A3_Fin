@@ -1,3 +1,11 @@
+
+/**
+ * SubmitAssignment component for handling assignment submission.
+ * @param {Object} props - Component props.
+ * @param {Object} props.searchParams - URL search parameters.
+ * @param {Object} props.params - URL route parameters.
+ * @returns {JSX.Element} - JSX element for the SubmitAssignment component.
+ */
 'use client';
 
 import { useRouter } from "next/navigation";
@@ -5,15 +13,22 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const SubmitAssignment = ({ searchParams, params }) => {
+    // State variables
     const [error, setError] = useState(null)
     const [submitting, setSubmitting] = useState(false)
     const [assignment, setAssignment] = useState({})
 
+    // Extracting courseId and id from searchParams and params
     const { courseId } = searchParams;
     const { id } = params;
 
+    // Router instance for navigation
     const router = useRouter();
 
+    /**
+     * Handles form submission for assignment submission.
+     * @param {Event} e - Event object.
+     */
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -34,6 +49,9 @@ const SubmitAssignment = ({ searchParams, params }) => {
         }
     }
 
+    /**
+     * Fetches assignment details from the server.
+     */
     useEffect(()=> {
         const fetchAssignment = async () => {
             const response = await fetch(`/api/assignments/${id}`);
@@ -43,6 +61,7 @@ const SubmitAssignment = ({ searchParams, params }) => {
         fetchAssignment();
     }, [])
 
+    // JSX for the component
     return (
         <div className='w-full pt-10 box-container grid grid-cols-1 md:grid-cols-2 gap-2'>
             <div className="w-100%">

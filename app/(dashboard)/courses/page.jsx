@@ -1,3 +1,11 @@
+/**
+ * This is the Courses component that displays a list of courses.
+ * It fetches the user's courses from the server and renders them using CourseCard components.
+ * If the user is a lecturer, it also provides an option to create a new course.
+ * 
+ * @returns {JSX.Element} - The JSX element representing the Courses component.
+ */
+
 'use client';
 
 import CourseCard from "@/components/CourseCard";
@@ -7,18 +15,33 @@ import { useEffect, useState } from "react";
 import withSession from "@/components/HOC/withSession";
 
 const Courses = () => {
+    /**
+     * State variable to store the fetched courses.
+     * @type {Array}
+     */
     const [courses, setCourses] = useState(null);
 
+    /**
+     * Fetch the user's session data.
+     */
     const { data: session, status } = useSession();
+
+    // Log the session data to the console.
     console.log('Session', session);
+
+    // Extract the user data from the session.
     const user = session?.user;
 
+    /**
+     * Fetch the user's courses from the server.
+     */
     const fetchCourses = async () => {
         const response = await fetch('/api/courses/my-courses', {
             method: 'GET',
             credentials: 'include', 
         });
-        
+
+        // If the response status is 200, parse the JSON response and update the courses state.
         if(response.status === 200) {
             const result = await response.json();
             console.log('Courses: ', result);
@@ -26,6 +49,7 @@ const Courses = () => {
         }
     }
 
+    // Fetch the courses when the component mounts.
     useEffect(()=> {
         fetchCourses();
     }, [])
@@ -54,5 +78,8 @@ const Courses = () => {
     )
 }
 
+// Export the Courses component as a dynamic page.
 export const dynamic = "force-dynamic";
+
+// Wrap the Courses component with the withSession HOC.
 export default withSession(Courses);

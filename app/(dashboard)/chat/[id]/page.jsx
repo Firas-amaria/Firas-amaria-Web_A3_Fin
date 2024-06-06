@@ -4,6 +4,11 @@ import { getSession } from 'next-auth/react';
 import { useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 
+/**
+ * Chat component for displaying and sending messages in a course.
+ * @param {Object} params - The parameters passed to the component.
+ * @returns {JSX.Element} - The JSX element for the Chat component.
+ */
 const Chat = ({ params }) => {
     const [socket, setSocket] = useState(null);
     const [sending, setSending] = useState(false);
@@ -14,6 +19,9 @@ const Chat = ({ params }) => {
     const chatContainer = useRef(null);
     const chatForm = useRef(null);
 
+    /**
+     * Fetches messages for the current course from the server.
+     */
     async function fetchMessages() {
         const session = await getSession();
         setUser(session.user);
@@ -47,6 +55,10 @@ const Chat = ({ params }) => {
         chatContainer.current.scrollTop = chatContainer.current.scrollHeight;
     }, [messageItems]);
 
+    /**
+     * Handles the submission of a new message.
+     * @param {Event} e - The submit event.
+     */
     const handleMessageSubmit = (e) => {
         console.log(e)
         e.preventDefault();
@@ -65,6 +77,10 @@ const Chat = ({ params }) => {
         });
     }
 
+    /**
+     * Handles the pressing of the Enter key in the message input field.
+     * @param {Event} e - The keydown event.
+     */
     const handleEnterPress = (e) => {
         if (e.key === 'Enter') {
             console.log('Enter pressed');
